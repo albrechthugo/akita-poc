@@ -6,6 +6,7 @@ import { AppComponent } from './app.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AkitaNgDevtools } from '@datorama/akita-ngdevtools'
 import { environment } from '../environments/environment'
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,6 +14,7 @@ import { environment } from '../environments/environment'
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     environment.production ? [] : AkitaNgDevtools.forRoot()
   ],
   providers: [],

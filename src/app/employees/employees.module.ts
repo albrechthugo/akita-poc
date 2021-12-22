@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { MatTableModule } from '@angular/material/table'
 
-import { EmployeesRoutingModule } from './employees-routing.module'
-import { EmployeesComponent } from './employees.component'
+import { EmployeesComponent, EmployeesRoutingModule } from '.'
 
 @NgModule({
   declarations: [EmployeesComponent],
-  imports: [CommonModule, EmployeesRoutingModule]
+  imports: [CommonModule, EmployeesRoutingModule, MatTableModule]
 })
 export class EmployeesModule {}
