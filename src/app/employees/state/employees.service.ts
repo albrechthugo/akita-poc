@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable, tap } from 'rxjs'
+import { AdvancedFilters } from '.'
 import { Employee, EmployeesStore } from '..'
 import { environment } from '../../../environments/environment'
 
@@ -18,5 +19,9 @@ export class EmployeesService {
       .get<Employee[]>(this.url)
       .pipe(tap((employees) => this.employeesStore.update((currentState) => ({ ...currentState, employees }))))
       .pipe(tap(() => this.employeesStore.setLoading(false)))
+  }
+
+  updateAdvancedFilters(advancedFilters: AdvancedFilters): void {
+    this.employeesStore.update((currentState) => ({ ...currentState, advancedFilters }))
   }
 }
