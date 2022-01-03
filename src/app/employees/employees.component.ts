@@ -12,6 +12,8 @@ export class EmployeesComponent implements OnInit {
 
   employees$ = this.employeesQuery.employees$
 
+  advancedFilters$ = this.employeesQuery.advancedFilters$
+
   employees: Employee[] = []
 
   displayedColumns: string[] = ['username', 'name', 'title', 'salary']
@@ -19,6 +21,11 @@ export class EmployeesComponent implements OnInit {
   constructor(private readonly employeesService: EmployeesService, private readonly employeesQuery: EmployeesQuery) {}
 
   ngOnInit(): void {
+    this.getAllEmployees()
+    this.advancedFilters$.subscribe(() => this.getAllEmployees())
+  }
+
+  private getAllEmployees(): void {
     this.employeesService
       .getAll()
       .pipe(switchMap(() => this.employees$))

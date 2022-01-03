@@ -1,4 +1,7 @@
 .employees {
+    display: flex;
+    flex-direction: column;
+
     &__table {
         width: 100%;
     }
