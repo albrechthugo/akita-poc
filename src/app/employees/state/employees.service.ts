@@ -13,8 +13,10 @@ export class EmployeesService {
   constructor(private readonly http: HttpClient, private readonly employeesStore: EmployeesStore) {}
 
   getAll(): Observable<Employee[]> {
+    this.employeesStore.setLoading(true)
     return this.http
       .get<Employee[]>(this.url)
       .pipe(tap((employees) => this.employeesStore.update((currentState) => ({ ...currentState, employees }))))
+      .pipe(tap(() => this.employeesStore.setLoading(false)))
   }
 }

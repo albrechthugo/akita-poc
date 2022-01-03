@@ -7,8 +7,11 @@ import { Employee, EmployeesState, EmployeesStore } from '..'
 export class EmployeesQuery extends Query<EmployeesState> {
   employees$: Observable<Employee[]>
 
+  isLoading$: Observable<boolean>
+
   constructor(protected override store: EmployeesStore) {
     super(store)
     this.employees$ = this.select('employees')
+    this.isLoading$ = this.selectLoading()
   }
 }
