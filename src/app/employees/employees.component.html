@@ -1,1 +1,3 @@
-<h1>employees</h1>
+<ng-container *ngFor="let employee of employees$ | async">
+  <span>{{ employee?.name }}</span>
+</ng-container>

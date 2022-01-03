@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core'
-import { EntityStore, StoreConfig } from '@datorama/akita'
+import { Store, StoreConfig } from '@datorama/akita'
 import { Employee } from '../'
 
-export function createInitialState(): Employee[] {
-  return []
+export interface EmployeesState {
+  employees: Employee[]
+}
+
+export function createInitialState(): EmployeesState {
+  return {
+    employees: []
+  }
 }
 
 @Injectable({ providedIn: 'root' })
 @StoreConfig({ name: 'employees' })
-export class EmployeesStore extends EntityStore<Employee[]> {
+export class EmployeesStore extends Store<EmployeesState> {
   constructor() {
     super(createInitialState())
   }
