@@ -1,0 +1,15 @@
+<section class="advanced-filter">
+  <form class="advanced-filter__form" [formGroup]="form">
+    <mat-form-field class="advanced-filter__input">
+      <mat-label>Username</mat-label>
+      <input matInput placeholder="albrechthugo" formControlName="username" />
+    </mat-form-field>
+
+    <mat-form-field class="advanced-filter__input">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Software Engineer" formControlName="title" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="applyFilters()">Apply</button>
+  </form>
+</section>
