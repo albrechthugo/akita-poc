@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core'
-import { switchMap } from 'rxjs'
 import { Employee, EmployeesQuery, EmployeesService } from '.'
 
 @Component({
@@ -21,16 +20,7 @@ export class EmployeesComponent implements OnInit {
   constructor(private readonly employeesService: EmployeesService, private readonly employeesQuery: EmployeesQuery) {}
 
   ngOnInit(): void {
-    this.getAllEmployees()
-    this.advancedFilters$.subscribe(() => this.getAllEmployees())
-  }
-
-  private getAllEmployees(): void {
-    this.employeesService
-      .getAll()
-      .pipe(switchMap(() => this.employees$))
-      .subscribe((employees) => {
-        this.employees = employees
-      })
+    this.employees$.subscribe((employees) => (this.employees = employees))
+    this.employeesService.getAll()
   }
 }

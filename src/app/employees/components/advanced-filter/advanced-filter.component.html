@@ -10,6 +10,13 @@
       <input matInput placeholder="Software Engineer" formControlName="title" />
     </mat-form-field>
 
-    <button mat-raised-button color="primary" (click)="applyFilters()">Apply</button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="applyFilters()"
+      [disabled]="form.get('username')?.value === null || form.get('title')?.value === null"
+    >
+      Apply
+    </button>
   </form>
 </section>
